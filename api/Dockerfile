@@ -2,12 +2,12 @@ FROM python:3.7-slim
 
 WORKDIR /app
 
-RUN pip install -U scikit-learn numpy, streamlit==0.83.0
+RUN pip install scikit-learn numpy streamlit joblib
 
-COPY aircraft_emission_api.py ./aircraft_emission_api.py
+COPY emission_api.py ./emission_api.py
 
 # expose port
 EXPOSE 8501
 
 # run the application:
-CMD streamlit run aircraft_emission_api.py
+ENTRYPOINT ["streamlit", "run", "emission_api.py", "--"]
